@@ -1,0 +1,22 @@
+Programa Aritmetica
+a, b: Real
+suma, producto: Real
+cocienteAB, cocienteBA: Real
+
+Inicio
+    Imprimir "Introduce un valor para a"
+    Leer(a)
+
+    Imprimir "Introduce un valor para b"
+    Leer(b)
+
+    suma <- a + b
+    producto <- a * b
+    cocienteAB <- a / b
+    cocienteBA <- b / a
+
+    Imprimir "a + b = " + suma
+    Imprimir "a * b = " + producto
+    Imprimir "a / b = " + cocienteAB
+    Imprimir "b / a = " + cocienteBA
+Fin

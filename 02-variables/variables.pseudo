@@ -1,0 +1,8 @@
+Programa Variables
+Variables
+    nombre: Cadena
+Inicio
+    Imprimir "Cual es tu nombre?"
+    Leer nombre
+    Imprimir "Hola " + nombre + "!"
+Fin

@@ -1,0 +1,14 @@
+Programa Condicionales
+Variables
+nombre: Cadena
+
+Inicio
+    Imprimir "Escriba un nombre"
+    Leer nombre
+
+    Si nombre == "Napoleon" entonces
+        Imprimir "Su apellido es Bonaparte!"
+    Sino
+        Imprimir "No se ha podido determinar su apellido"
+    Fin
+Fin

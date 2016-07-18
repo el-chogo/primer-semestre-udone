@@ -1,0 +1,20 @@
+Programa Ciclos
+Variables
+numero, potencia, resultado: Entero
+
+Inicio
+    Imprimir "Introduzca un numero"
+    Leer numero
+
+    Imprimir "Introduzca una potencia"
+    Leer potencia
+
+    resultado <- 1
+
+    Mientras potencia > 0 hacer
+        resultado <- numero * resultado
+        potencia <- potencia - 1
+    Fin
+
+    Imprimir resultado
+Fin
