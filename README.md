@@ -26,3 +26,40 @@ La decision de incluir Lisp, Haskell, Python y Ruby, ademas de los clasicos C y 
 - [ ] Sitio web que explique cada unidad, los ejemplos y sirva de orientacion a la hora de obtener las herramientas
 - [ ] Mejorar la documentacion
 - [ ] Cubrir todas las unidades
+
+# Referencias
+
+## C / C++
+- [GCC](https://gcc.gnu.org/)
+- [Referencia CPP](http://en.cppreference.com/w/cpp)
+- [Referencia C](http://en.cppreference.com/w/c)
+
+## Pascal
+- [Pagina oficial FreePascal](http://www.freepascal.org/)
+- [Wikibooks](https://en.wikibooks.org/wiki/Pascal_Programming)
+- [Free Pascal Wiki](http://wiki.freepascal.org/)
+- [RTL Reference](http://www.freepascal.org/docs-html/rtl/)
+
+## Haskell
+- [Haskell.org](http://ruby-doc.com/docs/ProgrammingRuby/)
+- [Learn you a Haskell for greater good!](http://learnyouahaskell.com/)
+- [Real World Haskell](http://book.realworldhaskell.org/read/)
+- [Hoogle](https://www.haskell.org/hoogle/)
+- [Prelude](https://duckduckgo.com/html/)
+- [Category Theory for Programmers by Bartosz Milewski](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
+- [Functors, applicative and monads in pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
+
+## Lisp
+- [SBCL](http://www.sbcl.org/)
+- [Gigamonkeys](http://www.gigamonkeys.com/book/)
+- [Hyper Spec](http://www.lispworks.com/documentation/HyperSpec/Front/index.htm)
+- [On Lisp by Paul Graham](http://www.paulgraham.com/onlisp.html)
+
+## Ruby
+- [Ruby Lang](https://www.ruby-lang.org/en/)
+- [Why's Poignant Guide](http://poignant.guide/book/)
+- [Pragmatic Programmer](http://ruby-doc.com/docs/ProgrammingRuby/)
+- [Ruby Doc](http://ruby-doc.org/)
+
+## Python
+- [Official page](https://www.python.org/)
