@@ -4,7 +4,7 @@ El mayor problema, IMHO, que enfrentan los alumnos de primer semestre es la falt
 
 En aras de facilitar la parte practica, este repositorio contiene codigo fuente en varios lenguajes con el fin de respaldar, con ejemplos correctos, lo aprendido en las diversas unidades que comprenden la materia.
 
-La decision de incluir Haskell, Python y Ruby, ademas de los clasicos C y Pascal, amplia el universo de conocimiento de los pupilos y les da una nocion de como una tarea se puede realizar de diferentes formas.
+La decision de incluir Lisp, Haskell, Python y Ruby, ademas de los clasicos C y Pascal, amplia el universo de conocimiento de los pupilos y les da una nocion de como una tarea se puede realizar de diferentes formas.
 
 # Unidades cubiertas
 
