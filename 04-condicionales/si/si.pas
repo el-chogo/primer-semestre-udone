@@ -1,4 +1,4 @@
-Program Condicionales;
+Program Si;
 Var
 nombre: String;
 

@@ -1,6 +1,6 @@
 if __name__ == "__main__":
-    a = input("Introduzca un valor para a: ")
-    b = input("Introduzca un valor para b: ")
+    a = int(input("Introduzca un valor para a: "))
+    b = int(input("Introduzca un valor para b: "))
 
     suma = a + b
     producto = a * b

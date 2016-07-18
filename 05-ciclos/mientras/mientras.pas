@@ -1,4 +1,4 @@
-Program Ciclos
+Program Mientras
 Var
 numero, resultado, potencia: Integer;
 

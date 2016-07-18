@@ -1,0 +1,16 @@
+Programa Para
+Variables
+numero, contador: Entero
+
+Inicio
+    Imprimir "Introduce un numero"
+    Leer numero
+
+    Para contador = 1, contador <= numero, incrementar contador hacer
+        Si contador residuo 2 == 0
+            Imprimir contador + " es un numero par!"
+        Sino
+            Imprimir contador + " es un numero impar!"
+        Fin
+    Fin
+Fin

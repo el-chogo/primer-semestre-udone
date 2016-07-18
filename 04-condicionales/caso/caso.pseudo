@@ -1,0 +1,28 @@
+Programa Caso
+Variables
+opcion: Entero
+
+Inicio
+    Imprimir "Introduzca un numero"
+
+    Caso numero de
+        0:
+            Imprimir "Numero neutro con respecto a la suma"
+        1:
+            Imprimir "Numero neutro con respecto a la multiplicacion"
+        2:
+            Imprimir "Base del sistema binario"
+        3:
+            Imprimir "Lados del triangulo"
+        4:
+            Imprimir "Casas de Hogwarts"
+        5:
+            Imprimir "Puntas de una estrella"
+        6:
+            Imprimir "Primer numero perfecto"
+        7:
+            Imprimir "Numero magico"
+        Sino:
+            Imprimir "Solo se imprimen resultados para numeros del 0 al 7"
+    Fin
+Fin

@@ -15,8 +15,8 @@ Begin
     cocienteAB := a / b;
     cocienteBA := b / a;
     
-    WriteLn('a + b = ' + suma);
-    WriteLn('a * b = ' + producto);
-    WriteLn('a / b = ' + cocienteAB);
-    WriteLn('b / a = ' + cocienteBA);
+    WriteLn('a + b = ', suma);
+    WriteLn('a * b = ', producto);
+    WriteLn('a / b = ', cocienteAB);
+    WriteLn('b / a = ', cocienteBA);
 End.
