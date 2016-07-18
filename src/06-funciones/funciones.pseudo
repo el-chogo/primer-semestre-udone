@@ -1,0 +1,35 @@
+Programa Funciones
+
+Funcion capitalizar (nombre: Cadena) : Cadena
+Variables
+caracterActual: Caracter
+capitalizarActual: Booleano
+Inicio
+    capitalizarActual := Verdadero
+    Para caracterActual <- principioCadena(nombre) hasta finCadena(nombre) hacer
+        Si capitalizarActual = Verdadero Entonces
+            modificar(nombre, caracterActual, mayuscula(caracterActual))
+        Fin
+        capitalizarActual <- falso
+        Si caracterActual = " " Entonces
+            capitalizarActual <- Verdadero
+        Fin
+    Fin
+Fin
+
+Funcion saludar (nombre: Cadena) : Nada
+Variables
+nombreCapitalizado: Cadena
+Inicio
+    nombreCapitalizado <- capitalizar(nombre)
+    Imprimir "Hola " + nombreCapitalizado
+Fin
+
+Variables
+nombre: Cadena
+Inicio
+    Imprimir "Introduzca su nombre completo"
+    Leer nombre
+
+    saludar(nombre)
+Fin
