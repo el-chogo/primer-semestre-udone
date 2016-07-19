@@ -41,11 +41,11 @@ La decision de incluir Lisp, Haskell, Python y Ruby, ademas de los clasicos C/C+
 - [RTL Reference](http://www.freepascal.org/docs-html/rtl/)
 
 ## Haskell
-- [Haskell.org](http://ruby-doc.com/docs/ProgrammingRuby/)
+- [Haskell.org](https://www.haskell.org/)
 - [Learn you a Haskell for greater good!](http://learnyouahaskell.com/)
 - [Real World Haskell](http://book.realworldhaskell.org/read/)
 - [Hoogle](https://www.haskell.org/hoogle/)
-- [Prelude](https://duckduckgo.com/html/)
+- [Prelude](https://hackage.haskell.org/package/base-4.9.0.0/docs/Prelude.html)
 - [Category Theory for Programmers by Bartosz Milewski](https://bartoszmilewski.com/2014/10/28/category-theory-for-programmers-the-preface/)
 - [Functors, applicative and monads in pictures](http://adit.io/posts/2013-04-17-functors,_applicatives,_and_monads_in_pictures.html)
 
