@@ -1,4 +1,4 @@
-#include <iostream> // Libreria estandar de IO C++
+#include <iostream> // Libreria estandar de flujos IO C++
 
 int main(int argc, char *argv[]) {
     /* 
