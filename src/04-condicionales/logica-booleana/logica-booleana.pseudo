@@ -1,0 +1,12 @@
+Programa LogicaBooleana
+Inicio
+    Imprimir "Verdadero y Falso: " + Verdadero && Falso
+    Imprimir "Falso y Verdadero: " + Falso && Verdadero
+    Imprimir "Verdadero y Verdadero: " + Verdadero && Verdadero
+    Imprimir "Falso y Falso: " + Falso && Falso
+
+    Imprimir "Verdadero o Falso: " + Verdadero || Falso
+    Imprimir "Falso o Verdadero: " + Falso || Verdadero
+    Imprimir "Verdadero o Verdadero: " + Verdadero || Verdadero
+    Imprimir "Falso o Falso: " + Falso || Falso
+Fin
