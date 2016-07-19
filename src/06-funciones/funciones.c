@@ -7,7 +7,9 @@ char * capitalizar(char nombre[]) {
 
     for(contador = 0; nombre[contador] != '\0'; contador++) {
         if (capitalizarActual == 1 && nombre[contador] != ' ') {
-            nombre[contador] = nombre[contador] - 32;
+            nombre[contador] = 
+                (nombre[contador] >= 'a' && nombre[contador] <= 'z') 
+                ? nombre[contador] - 32 : nombre[contador];
             capitalizarActual = 0;
         }
         if (nombre[contador] == ' ') {
