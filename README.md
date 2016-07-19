@@ -15,8 +15,6 @@ La decision de incluir Lisp, Haskell, Python y Ruby, ademas de los clasicos C/C+
 5. Funciones
 
 # Unidades no cubiertas
-4. Condicionales
-    1. Logica booleana
 5. Funciones
     1. Introduccion a la recursividad
 6. Registros
