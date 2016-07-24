@@ -11,6 +11,11 @@ int main(int argc, char *argv[]) {
     char nombre[20];
 
     cout << "Cual es tu nombre?" << endl;
+
+    /* El flujo de entrada `cin` junto al operador >> es usado para obtener
+       datos de la entrada estandar
+    */
+
     cin >> nombre;
 
     cout << "Hola " << nombre << "!" << endl;
