@@ -60,29 +60,59 @@
         ELEMENT(TYPE) ** cur = &((*xs)->primero);               \
         ELEMENT(TYPE) * tmp;                                    \
                                                                 \
-        printf("Hola\n");                                       \
         if (*cur == NULL) {                                     \
             return;                                             \
         }                                                       \
                                                                 \
         while (*cur != NULL) {                                  \
             tmp = (*cur)->siguiente;                            \
-            free(*cur);                                          \
+            free(*cur);                                         \
             cur = &tmp;                                         \
         }                                                       \
-        free(*xs); \
+        free(*xs);                                              \
     }
 
 #define FREE_CONTAINER(TYPE, XS)                \
     free_ ## TYPE ## _container(XS)
 
-#define SETUP_CONTAINER(TYPE) \
-    MAKE_CONTAINER(TYPE) \
-    MAKE_CONTAINER_FREE(TYPE)
+#define MAKE_ARRAY_TO_CONTAINER(TYPE)                                   \
+    CONTAINER(TYPE) * array_to_ ## TYPE ## _container(TYPE xs[], int tamano) { \
+        int contador;                                                   \
+        CONTAINER(TYPE) * ys = ALLOC_CONTAINER(TYPE);                   \
+        ELEMENT(TYPE) ** cur = &(ys->primero);                          \
+                                                                        \
+        for (contador = 0; contador < tamano; contador++) {             \
+            *cur = ALLOC_ELEMENT(TYPE);                                 \
+            (*cur)->elemento = xs[contador];                            \
+            (*cur)->siguiente = NULL;                                   \
+            cur = &((*cur)->siguiente);                                 \
+        }                                                               \
+                                                                        \
+        return ys;                                                      \
+    }
+
+#define SETUP_CONTAINER(TYPE)                   \
+    MAKE_CONTAINER(TYPE)                        \
+    MAKE_CONTAINER_FREE(TYPE)                   \
+    MAKE_ARRAY_TO_CONTAINER(TYPE)
+
+#define MAKE_TRACE(TYPE, PRINTF_MOD)            \
+    TYPE trace_ ## TYPE (TYPE x) {              \
+        printf(PRINTF_MOD, x);                  \
+        return x;                               \
+    }
+
+#define TRACE(TYPE, x)                          \
+    trace_ ## TYPE(x)
+
+#define ARRAY_TO_CONTAINER(TYPE, xs, n)         \
+    array_to_ ## TYPE ## _container(xs, n)
 
 SETUP_CONTAINER(int)
 SETUP_CONTAINER(char)
 MAP(int,char)
+MAP(char, char)
+MAKE_TRACE(char, "%c\n");
 
 char desdeA(int n) {
     return 97 + n;
@@ -95,9 +125,17 @@ int main(int argc, char *argv[]) {
     listaNumeros.primero->siguiente = NULL;
 
     CONTAINER(char) * listaLetras;
+    CONTAINER(char) * otraListaLetras;
+
     listaLetras = mapear_int_char(listaNumeros, &desdeA);
 
     printf("%i\n", listaLetras->primero->elemento);
 
     FREE_CONTAINER(char, &listaLetras);
+
+    char arregloLetras[] = {'a', 'b', 'c', 'd', 'e', 'f'};
+    otraListaLetras = ARRAY_TO_CONTAINER(char, arregloLetras, 6);
+    mapear_char_char(*otraListaLetras, &trace_char);
+
+    FREE_CONTAINER(char, &otraListaLetras);
 }
