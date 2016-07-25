@@ -2,22 +2,22 @@
 #include <stdlib.h>
 #include <unistd.h>
 
-#define ELEMENT(TYPE)                           \
-    struct TYPE ## ElementoContenedor
+#define ELEMENT(SYN)                            \
+    struct SYN ## ElementoContenedor
 
-#define MAKE_CONTAINER_ELEMENT(TYPE)            \
-    ELEMENT(TYPE) {                             \
+#define MAKE_CONTAINER_ELEMENT(TYPE, SYN)       \
+    ELEMENT(SYN) {                              \
         TYPE elemento;                          \
-        ELEMENT(TYPE) * siguiente;              \
+        ELEMENT(SYN) * siguiente;              \
     };
 
-#define CONTAINER(TYPE)                         \
-    struct TYPE ## Contenedor
+#define CONTAINER(SYN)                          \
+    struct SYN ## Contenedor
 
-#define MAKE_CONTAINER(TYPE)                    \
-    MAKE_CONTAINER_ELEMENT(TYPE)                \
-    CONTAINER(TYPE) {                           \
-        ELEMENT(TYPE)  * primero;               \
+#define MAKE_CONTAINER(TYPE, SYN)               \
+    MAKE_CONTAINER_ELEMENT(TYPE, SYN)           \
+    CONTAINER(SYN) {                            \
+        ELEMENT(SYN)  * primero;                \
         int containerSize;                      \
     };
 
@@ -27,18 +27,18 @@
 #define ALLOC_ELEMENT(TYPE)                     \
     malloc(sizeof(ELEMENT(TYPE) *))
 
-#define MAP_FUNCTION_NAME(TYPE_A, TYPE_B)       \
-    mapear_ ## TYPE_A ## _ ## TYPE_B
+#define MAP_FUNCTION_NAME(SYN_A, SYN_B)         \
+    mapear_ ## SYN_A ## _ ## SYN_B
 
-#define MAP_FUNCTION_SIG(TYPE_A, TYPE_B)        \
-    (CONTAINER(TYPE_A) xs, TYPE_B (*f)(TYPE_A))
+#define MAP_FUNCTION_SIG(TYPE_A, TYPE_B, SYN_A) \
+    (CONTAINER(SYN_A) xs, TYPE_B (*f)(TYPE_A))
 
-#define MAP(TYPE_A, TYPE_B)                                             \
-    CONTAINER(TYPE_B) * MAP_FUNCTION_NAME(TYPE_A, TYPE_B) MAP_FUNCTION_SIG(TYPE_A, TYPE_B) { \
-        CONTAINER(TYPE_B) * ys = ALLOC_CONTAINER(TYPE_B);               \
+#define MAP(TYPE_A, TYPE_B, SYN_A, SYN_B)                               \
+    CONTAINER(SYN_B) * MAP_FUNCTION_NAME(SYN_A, SYN_B) MAP_FUNCTION_SIG(TYPE_A, TYPE_B, SYN_A) { \
+        CONTAINER(SYN_B) * ys = ALLOC_CONTAINER(SYN_B);                 \
         ys->primero = NULL;                                             \
-        ELEMENT(TYPE_A) * curX = xs.primero;                            \
-        ELEMENT(TYPE_B) ** curY;                                        \
+        ELEMENT(SYN_A) * curX = xs.primero;                             \
+        ELEMENT(SYN_B) ** curY;                                         \
                                                                         \
         if (curX == NULL) {                                             \
             return NULL;                                                \
@@ -47,7 +47,7 @@
         curY = &(ys->primero);                                          \
                                                                         \
         while (curX != NULL) {                                          \
-            *curY = ALLOC_ELEMENT(TYPE_B);                              \
+            *curY = ALLOC_ELEMENT(SYN_B);                               \
             (*curY)->elemento = f(curX->elemento);                      \
             (*curY)->siguiente = NULL;                                  \
             curX = curX->siguiente;                                     \
@@ -55,10 +55,10 @@
         return ys;                                                      \
     }
 
-#define MAKE_CONTAINER_FREE(TYPE)                               \
-    void free_ ## TYPE ## _container(CONTAINER(TYPE) ** xs) {   \
-        ELEMENT(TYPE) ** cur = &((*xs)->primero);               \
-        ELEMENT(TYPE) * tmp;                                    \
+#define MAKE_CONTAINER_FREE(SYN)                                \
+    void free_ ## SYN ## _container(CONTAINER(SYN) ** xs) {     \
+        ELEMENT(SYN) ** cur = &((*xs)->primero);                \
+        ELEMENT(SYN) * tmp;                                     \
                                                                 \
         if (*cur == NULL) {                                     \
             return;                                             \
@@ -72,17 +72,17 @@
         free(*xs);                                              \
     }
 
-#define FREE_CONTAINER(TYPE, XS)                \
-    free_ ## TYPE ## _container(XS)
+#define FREE_CONTAINER(SYN, XS)                 \
+    free_ ## SYN ## _container(XS)
 
-#define MAKE_ARRAY_TO_CONTAINER(TYPE)                                   \
-    CONTAINER(TYPE) * array_to_ ## TYPE ## _container(TYPE xs[], int tamano) { \
+#define MAKE_ARRAY_TO_CONTAINER(TYPE, SYN)                              \
+    CONTAINER(SYN) * array_to_ ## SYN ## _container(TYPE xs[], int tamano) { \
         int contador;                                                   \
-        CONTAINER(TYPE) * ys = ALLOC_CONTAINER(TYPE);                   \
-        ELEMENT(TYPE) ** cur = &(ys->primero);                          \
+        CONTAINER(SYN) * ys = ALLOC_CONTAINER(SYN);                     \
+        ELEMENT(SYN) ** cur = &(ys->primero);                           \
                                                                         \
         for (contador = 0; contador < tamano; contador++) {             \
-            *cur = ALLOC_ELEMENT(TYPE);                                 \
+            *cur = ALLOC_ELEMENT(SYN);                                  \
             (*cur)->elemento = xs[contador];                            \
             (*cur)->siguiente = NULL;                                   \
             cur = &((*cur)->siguiente);                                 \
@@ -91,28 +91,43 @@
         return ys;                                                      \
     }
 
-#define SETUP_CONTAINER(TYPE)                   \
-    MAKE_CONTAINER(TYPE)                        \
-    MAKE_CONTAINER_FREE(TYPE)                   \
-    MAKE_ARRAY_TO_CONTAINER(TYPE)
+#define SETUP_CONTAINER(TYPE, SYN)              \
+    MAKE_CONTAINER(TYPE, SYN)                   \
+    MAKE_CONTAINER_FREE(SYN)                    \
+    MAKE_ARRAY_TO_CONTAINER(TYPE, SYN)
 
-#define MAKE_TRACE(TYPE, PRINTF_MOD)            \
+#define MAKE_TRACE(TYPE, PRINTF)                \
     TYPE trace_ ## TYPE (TYPE x) {              \
-        printf(PRINTF_MOD, x);                  \
+        PRINTF;                                 \
         return x;                               \
     }
 
 #define TRACE(TYPE, x)                          \
     trace_ ## TYPE(x)
 
-#define ARRAY_TO_CONTAINER(TYPE, xs, n)         \
-    array_to_ ## TYPE ## _container(xs, n)
+#define ARRAY_TO_CONTAINER(SYN, xs, n)          \
+    array_to_ ## SYN ## _container(xs, n)
 
-SETUP_CONTAINER(int)
-SETUP_CONTAINER(char)
-MAP(int,char)
-MAP(char, char)
-MAKE_TRACE(char, "%c\n");
+#define REGISTER_ALL_TYPES                      \
+    SETUP_CONTAINER(int, int)                   \
+    SETUP_CONTAINER(char, char)                 \
+    SETUP_CONTAINER(double, double)             \
+    SETUP_CONTAINER(float, float)
+
+typedef struct TelefonoS {
+    int id;
+    char *nombre;
+} Telefono;
+
+
+REGISTER_ALL_TYPES
+SETUP_CONTAINER(Telefono, Telefono)
+MAP(int,char,int,char)
+MAP(char,int,char,int)
+MAP(char,char,char,char)
+MAP(Telefono, Telefono, Telefono, Telefono)
+MAKE_TRACE(char, printf("%c\n", x))
+MAKE_TRACE(Telefono, printf("ID: %i\nCedula: %s\n", x.id, x.nombre))
 
 char desdeA(int n) {
     return 97 + n;
@@ -138,4 +153,15 @@ int main(int argc, char *argv[]) {
     mapear_char_char(*otraListaLetras, &trace_char);
 
     FREE_CONTAINER(char, &otraListaLetras);
+
+    Telefono agenda[] = {
+        {0, "Carlos Gottberg"},
+        {1, "Lelouch Lamperouge"}
+    };
+
+    CONTAINER(Telefono) *listaTelefonos;
+    listaTelefonos = ARRAY_TO_CONTAINER(Telefono, agenda, 2);
+    mapear_Telefono_Telefono(*listaTelefonos, &trace_Telefono);
+
+    return 0;
 }
