@@ -6,4 +6,3 @@ if __name__ == "__main__":
             print(str(contador) + " es un numero par!")
         else:
             print(str(contador) + " es un numero impar!")
-

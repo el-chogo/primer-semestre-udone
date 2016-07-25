@@ -12,7 +12,7 @@ def reducir(f, xs, y)
   return reducir(f, rest, f.call(y, x)) unless xs.empty?
   y
 end
-  
+
 def cuadrado(n)
   n * n
 end
@@ -78,13 +78,13 @@ def main
   divisores = todas_funciones(divisor_7, divisor_13)
 
   puts "Numeros divisibles por el 7 y 13 del 1 al 1000"
-  
+
   tomar_cuando(divisores, numeros)
 
   puts "Introduzca una palabra"
   palabra = gets.chomp
 
-  
+
   palindromo = palabra.downcase == (voltear palabra.downcase.chars).join("")
 
   if palindromo

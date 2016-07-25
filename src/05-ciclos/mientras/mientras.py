@@ -8,4 +8,3 @@ if __name__ == "__main__":
         potencia = potencia - 1
 
     print(resultado)
-    

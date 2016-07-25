@@ -15,11 +15,11 @@ puts "Verdadero o Verdadero: #{true or true}"
 puts "Falso o Falso: #{false or false}"
 
 if false or nil
-    puts "Esto nunca pasara"
+  puts "Esto nunca pasara"
 else
-    puts "false y nil evaluan a falso"
+  puts "false y nil evaluan a falso"
 end
 
 if true and 2
-    puts "La presencia de un valor evalua a verdadero"
+  puts "La presencia de un valor evalua a verdadero"
 end

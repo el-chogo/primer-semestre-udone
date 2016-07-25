@@ -8,8 +8,8 @@ contador = 0
 resultado = 1
 
 while contador < exponente
-    resultado = resultado * numero
-    contador += 1
+  resultado = resultado * numero
+  contador += 1
 end
 
 puts resultado

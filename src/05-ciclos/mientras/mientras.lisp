@@ -12,7 +12,7 @@
 (setq *exponente* (read))
 
 (loop while (< *contador* *exponente*) do
-    (incf *contador*)
-        (setf *resultado* (* *resultado* *numero*)))
+      (incf *contador*)
+      (setf *resultado* (* *resultado* *numero*)))
 
 (format t "~D~%" *resultado*)

@@ -7,8 +7,8 @@ char * capitalizar(char nombre[]) {
 
     for(contador = 0; nombre[contador] != '\0'; contador++) {
         if (capitalizarActual == 1 && nombre[contador] != ' ') {
-            nombre[contador] = 
-                (nombre[contador] >= 'a' && nombre[contador] <= 'z') 
+            nombre[contador] =
+                (nombre[contador] >= 'a' && nombre[contador] <= 'z')
                 ? nombre[contador] - 32 : nombre[contador];
             capitalizarActual = 0;
         }
@@ -27,7 +27,7 @@ void saludar(char nombre[]) {
 
 int main(int argc, char *argv[]) {
     char nombre[30];
-    
+
     printf("Introduzca su nombre completo: ");
     fgets(nombre, sizeof(nombre), stdin);
 

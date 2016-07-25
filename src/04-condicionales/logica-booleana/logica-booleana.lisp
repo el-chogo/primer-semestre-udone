@@ -28,10 +28,10 @@
 
 (if (and nil t)
     (format t "(and nil t) = t~%")
-    (format t "(and nil t) = nil~%"))
+  (format t "(and nil t) = nil~%"))
 
 (if (and t nil)
     (format t "(and t nil) = t~%")
-    (format t "(and t nil) = nil~%"))
+  (format t "(and t nil) = nil~%"))
 (if (and nil nil) (format t "(and nil nil) = t~%") (format t "(and nil nil) = nil~%"))
 (if (and t t) (format t "(and t t) = t~%") (format t "(and t t) = nil~%"))

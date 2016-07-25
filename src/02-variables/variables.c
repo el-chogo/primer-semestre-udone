@@ -6,7 +6,7 @@ int main(int argc, char *argv[]) {
     char nombre[20]; //Establecemos un limite de 19 caracteres para el nombre
 
     printf("Cual es tu nombre?\n");
-    
+
     /* Mediante fgets obtenemos datos de un medio de entrada, en éste caso
        de stdin (STanDard INput o Entrada estandar)
 

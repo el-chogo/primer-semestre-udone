@@ -1,22 +1,22 @@
 def capitalizar(nombre)
-    nombreModificado = nombre.dup
-    longitud = nombre.length - 1
-    capitalizarActual = true
+  nombreModificado = nombre.dup
+  longitud = nombre.length - 1
+  capitalizarActual = true
 
-    for contador in 0..longitud
-        if capitalizarActual and (nombre[contador] != " ")
-            nombreModificado[contador] = nombre[contador].upcase
-            capitalizarActual = false
-        elsif nombre[contador] == " "
-            capitalizarActual = true
-        end
+  for contador in 0..longitud
+    if capitalizarActual and (nombre[contador] != " ")
+      nombreModificado[contador] = nombre[contador].upcase
+      capitalizarActual = false
+    elsif nombre[contador] == " "
+      capitalizarActual = true
     end
+  end
 
-    nombreModificado
+  nombreModificado
 end
 
 def saludar(nombre)
-    puts "Hola #{capitalizar(nombre)}"
+  puts "Hola #{capitalizar(nombre)}"
 end
 
 puts "Introduzca su nombre completo"

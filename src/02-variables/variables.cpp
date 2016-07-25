@@ -1,10 +1,10 @@
 #include <iostream>
-/* 
-    "Importamos" cout, cin y endl para poder usarlos sin el
-    operador de resolucion
+/*
+   "Importamos" cout, cin y endl para poder usarlos sin el
+   operador de resolucion
 */
 using std::cout;
-using std::cin; 
+using std::cin;
 using std::endl;
 
 int main(int argc, char *argv[]) {
