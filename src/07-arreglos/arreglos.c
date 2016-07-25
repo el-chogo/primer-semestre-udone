@@ -11,15 +11,15 @@
         ELEMENT(TYPE) * siguiente;              \
     };
 
+#define CONTAINER(TYPE)                         \
+    struct TYPE ## Contenedor
+
 #define MAKE_CONTAINER(TYPE)                    \
     MAKE_CONTAINER_ELEMENT(TYPE)                \
-    struct TYPE ## Contenedor {                 \
+    CONTAINER(TYPE) {                           \
         ELEMENT(TYPE)  * primero;               \
         int containerSize;                      \
     };
-
-#define CONTAINER(TYPE)                         \
-    struct TYPE ## Contenedor
 
 #define ALLOC_CONTAINER(TYPE)                   \
     malloc(sizeof(CONTAINER(TYPE) *))
@@ -55,9 +55,33 @@
         return ys;                                                      \
     }
 
+#define MAKE_CONTAINER_FREE(TYPE)                               \
+    void free_ ## TYPE ## _container(CONTAINER(TYPE) ** xs) {   \
+        ELEMENT(TYPE) ** cur = &((*xs)->primero);               \
+        ELEMENT(TYPE) * tmp;                                    \
+                                                                \
+        printf("Hola\n");                                       \
+        if (*cur == NULL) {                                     \
+            return;                                             \
+        }                                                       \
+                                                                \
+        while (*cur != NULL) {                                  \
+            tmp = (*cur)->siguiente;                            \
+            free(*cur);                                          \
+            cur = &tmp;                                         \
+        }                                                       \
+        free(*xs); \
+    }
 
-MAKE_CONTAINER(int)
-MAKE_CONTAINER(char)
+#define FREE_CONTAINER(TYPE, XS)                \
+    free_ ## TYPE ## _container(XS)
+
+#define SETUP_CONTAINER(TYPE) \
+    MAKE_CONTAINER(TYPE) \
+    MAKE_CONTAINER_FREE(TYPE)
+
+SETUP_CONTAINER(int)
+SETUP_CONTAINER(char)
 MAP(int,char)
 
 char desdeA(int n) {
@@ -75,6 +99,5 @@ int main(int argc, char *argv[]) {
 
     printf("%i\n", listaLetras->primero->elemento);
 
-    free(listaLetras->primero);
-    free(listaLetras);
+    FREE_CONTAINER(char, &listaLetras);
 }
