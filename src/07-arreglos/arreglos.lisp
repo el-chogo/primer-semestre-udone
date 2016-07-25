@@ -1,80 +1,80 @@
 (defun mapear (f xs)
-    (defun mapear-p (f xs ys)
-        (let ((x (car xs))
-              (rest (cdr xs)))
-            (cond 
-                (xs (mapear-p f rest (append ys (list (funcall f x)))))
-                (t ys))))
-    (mapear-p f xs '()))
+  (defun mapear-p (f xs ys)
+    (let ((x (car xs))
+          (rest (cdr xs)))
+      (cond
+       (xs (mapear-p f rest (append ys (list (funcall f x)))))
+       (t ys))))
+  (mapear-p f xs '()))
 
 (defun reducir (f xs inicial)
-    (defun reducir-p (acc f xs )
-        (let ((x (car xs))
-              (rest (cdr xs)))
-            (cond
-                (xs (reducir-p (funcall f acc x) f rest))
-                (t acc))))
-    (reducir-p inicial f xs))
+  (defun reducir-p (acc f xs )
+    (let ((x (car xs))
+          (rest (cdr xs)))
+      (cond
+       (xs (reducir-p (funcall f acc x) f rest))
+       (t acc))))
+  (reducir-p inicial f xs))
 
 (defun voltear (xs)
-    (let ((x (car xs))
-          (rest (cdr xs)))
-        (cond
-            (x (append (voltear rest) (list x)))
-            (t '()))))
+  (let ((x (car xs))
+        (rest (cdr xs)))
+    (cond
+     (x (append (voltear rest) (list x)))
+     (t '()))))
 
 (defun alguno?-2 (f xs)
-    (let ((x (car xs))
-          (rest (cdr xs)))
-        (if x
-            (cond
-                ((funcall f x) t)
-                (t (alguno?-2 f rest)))
-            nil)))
+  (let ((x (car xs))
+        (rest (cdr xs)))
+    (if x
+        (cond
+         ((funcall f x) t)
+         (t (alguno?-2 f rest)))
+      nil)))
 
 (defun y-logico (a b)
-    (and a b))
+  (and a b))
 
 (defun o-logico (a b)
-    (or a b))
+  (or a b))
 
 (defun todos (f xs)
-    (reducir #'y-logico (mapear f xs) t))
+  (reducir #'y-logico (mapear f xs) t))
 
 (defun alguno? (f xs)
-    (reducir #'o-logico (mapear f xs) nil))
+  (reducir #'o-logico (mapear f xs) nil))
 
 (defun generar-agregar-tantos (n)
-    (let ((contador 0))
-        (defun agregar-tantos (xs a)
-            (cond ((< contador n) 
-                        (setq contador (+ contador 1))
-                        (append xs (list a)))
-                    (t xs)))))
+  (let ((contador 0))
+    (defun agregar-tantos (xs a)
+      (cond ((< contador n)
+             (setq contador (+ contador 1))
+             (append xs (list a)))
+            (t xs)))))
 
 (defun tomar (n xs)
-    (reducir (generar-agregar-tantos n) xs '()))
+  (reducir (generar-agregar-tantos n) xs '()))
 
 ;; Funcion de alto orden, regresa una funcion
 (defun anadir-verdad (f)
-    (defun anadir-verdad-p (xs a)
-        (if (funcall f a) (append xs (list a)) xs)))
+  (defun anadir-verdad-p (xs a)
+    (if (funcall f a) (append xs (list a)) xs)))
 
 (defun tomar-cuando (f xs)
-    (reducir (anadir-verdad f) xs '()))
+  (reducir (anadir-verdad f) xs '()))
 
 (defun igual-5 (a) (= 5 a))
 
 (defun tomar-tantos-cuando (n f xs)
-    (tomar n (tomar-cuando f xs)))
+  (tomar n (tomar-cuando f xs)))
 
 (defun generar-divisor? (n)
-    (lambda (a)
-        (if (= 0 (mod a n)) t nil)))
+  (lambda (a)
+    (if (= 0 (mod a n)) t nil)))
 
 (defun rango (max &key (min 0) (paso 1))
   (loop for n from min below max by paso
-     collect n))
+        collect n))
 
 (defun aplicar-a (a)
   (lambda (f)
@@ -91,8 +91,8 @@
   (coerce xs 'string))
 
 (defun componer (f g)
-    (lambda (x)
-      (funcall g (funcall f x))))
+  (lambda (x)
+    (funcall g (funcall f x))))
 
 (defun palindromo (xs)
   (string-equal (lista-a-cadena xs) (lista-a-cadena (voltear xs))))
@@ -110,6 +110,6 @@
 	 (xs (cadena-a-lista palabra)))
     (if (palindromo xs)
 	(format t "Su palabra es un palindromo~%")
-	(format t "Su palabra no es un palindromo~%")))
-  
-(main)
+      (format t "Su palabra no es un palindromo~%")))
+
+  (main)
