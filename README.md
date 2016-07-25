@@ -1,10 +1,18 @@
 # Primer Semestre Udone
 
-El mayor problema, IMHO, que enfrentan los alumnos de primer semestre es la falta de ejemplos. Si bien las clases de Algoritmos y Estructura de Datos cubren el contenido diseñado para dar ese primer paso hacia la programación, el tiempo con el que cuentan los profesores es limitado y cubrir ambas partes, la abstracta y la práctica, es una tarea colosal.
+El mayor problema, IMHO, que enfrentan los alumnos de primer semestre es la
+falta de ejemplos. Si bien las clases de Algoritmos y Estructura de Datos cubren
+el contenido diseñado para dar ese primer paso hacia la programación, el tiempo
+con el que cuentan los profesores es limitado y cubrir ambas partes, la
+abstracta y la práctica, es una tarea colosal.
 
-En aras de facilitar la parte práctica, este repositorio contiene código fuente en varios lenguajes con el fin de respaldar, con ejemplos correctos, lo aprendido en las diversas unidades que comprenden la materia.
+En aras de facilitar la parte práctica, este repositorio contiene código fuente
+en varios lenguajes con el fin de respaldar, con ejemplos correctos, lo
+aprendido en las diversas unidades que comprenden la materia.
 
-La decisión de incluir Lisp, Haskell, Python y Ruby, ademas de los clásicos C/C++ y Pascal, amplia el universo de conocimiento de los pupilos y les da una noción de como una tarea se puede realizar de diferentes formas.
+La decisión de incluir Lisp, Haskell, Python y Ruby, ademas de los clásicos
+C/C++ y Pascal, amplia el universo de conocimiento de los pupilos y les da una
+noción de como una tarea se puede realizar de diferentes formas.
 
 # Unidades cubiertas
 
@@ -12,7 +20,9 @@ La decisión de incluir Lisp, Haskell, Python y Ruby, ademas de los clásicos C/
 2. Variables
 3. Aritmetica
 4. Condicionales
-5. Funciones
+5. Ciclos
+6. Funciones
+7. Arreglos
 
 # Unidades no cubiertas
 5. Funciones
